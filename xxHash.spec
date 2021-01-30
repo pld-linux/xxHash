@@ -12,6 +12,10 @@ Patch0:		%{name}-pc.patch
 URL:		https://github.com/Cyan4973/xxHash
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%ifarch %{arm}
+%define		archcflags	-DXXH_FORCE_MEMORY_ACCESS=1
+%endif
+
 %description
 xxHash is an Extremely fast Hash algorithm, running at RAM speed
 limits. It successfully completes the SMHasher test suite which
@@ -56,7 +60,7 @@ Statyczna biblioteka xxHash.
 
 %build
 CFLAGS="%{rpmcflags}" \
-CPPFLAGS="%{rpmcflags}" \
+CPPFLAGS="%{rpmcflags} %{?archcflags}" \
 LDFLAGS="%{rpmldflags}" \
 %{__make} \
 	prefix=%{_prefix} \
