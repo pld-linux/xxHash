@@ -1,14 +1,14 @@
 Summary:	xxHash - extremely fast hash algorithm
 Summary(pl.UTF-8):	xxHash - bardzo szybki algorytm haszowania
 Name:		xxHash
-Version:	0.8.0
+Version:	0.8.1
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/Cyan4973/xxHash/releases
 Source0:	https://github.com/Cyan4973/xxHash/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	62310678857c30fcef4128f41f711f49
-Patch0:		%{name}-pc.patch
+# Source0-md5:	b67c587f5ff4894253da0095ba7ea393
+Patch0:		man-symlinks.patch
 URL:		https://github.com/Cyan4973/xxHash
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -59,6 +59,7 @@ Statyczna biblioteka xxHash.
 %patch0 -p1
 
 %build
+CC="%{__cc}" \
 CFLAGS="%{rpmcflags}" \
 CPPFLAGS="%{rpmcflags} %{?archcflags}" \
 LDFLAGS="%{rpmldflags}" \
