@@ -12,9 +12,7 @@ Patch0:		man-symlinks.patch
 URL:		https://github.com/Cyan4973/xxHash
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%ifarch %{arm}
-%define		archcflags	-DXXH_FORCE_MEMORY_ACCESS=1
-%endif
+%define		specflags_arm	-DXXH_FORCE_MEMORY_ACCESS=1
 
 %description
 xxHash is an Extremely fast Hash algorithm, running at RAM speed
@@ -61,7 +59,7 @@ Statyczna biblioteka xxHash.
 %build
 CC="%{__cc}" \
 CFLAGS="%{rpmcflags}" \
-CPPFLAGS="%{rpmcflags} %{?archcflags}" \
+CPPFLAGS="%{rpmcflags}" \
 LDFLAGS="%{rpmldflags}" \
 %{__make} \
 	prefix=%{_prefix} \
