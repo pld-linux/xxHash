@@ -1,13 +1,13 @@
 Summary:	xxHash - extremely fast hash algorithm
 Summary(pl.UTF-8):	xxHash - bardzo szybki algorytm haszowania
 Name:		xxHash
-Version:	0.8.2
+Version:	0.8.3
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/Cyan4973/xxHash/releases
 Source0:	https://github.com/Cyan4973/xxHash/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	a7628d7a4fd608a7573c5a3e2c856ea5
+# Source0-md5:	599804eb9555e51c05f1b821f9212a07
 URL:		https://github.com/Cyan4973/xxHash
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -81,12 +81,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGELOG LICENSE README.md
 %attr(755,root,root) %{_bindir}/xxhsum
+%attr(755,root,root) %{_bindir}/xxh3sum
 %attr(755,root,root) %{_bindir}/xxh32sum
 %attr(755,root,root) %{_bindir}/xxh64sum
 %attr(755,root,root) %{_bindir}/xxh128sum
 %attr(755,root,root) %{_libdir}/libxxhash.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxxhash.so.0
 %{_mandir}/man1/xxhsum.1*
+%{_mandir}/man1/xxh3sum.1*
 %{_mandir}/man1/xxh32sum.1*
 %{_mandir}/man1/xxh64sum.1*
 %{_mandir}/man1/xxh128sum.1*
